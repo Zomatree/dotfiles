@@ -4,14 +4,14 @@
 export PATH="$(du $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH"
 
 # ZSH
-export ZSH="/home/vale/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 export UPDATE_ZSH_DAYS=30
 
 # Firefox
-export BROWSER='firefox'
+export BROWSER='google-chrome-stable'
 
 # emacs
-export EDITOR='emacs'
+export EDITOR='vim'
 
 # Ghidra
 export GHIDRA_INSTALL_DIR='/opt/ghidra'

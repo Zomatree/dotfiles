@@ -126,16 +126,3 @@ live_config_reload: true
 shell:
   program: /usr/bin/zsh
 
-# Key bindings.
-key_bindings:
-  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,    mode: ~Alt }
-  - { key: PageDown,  mods: Shift,   action: ScrollPageDown,  mode: ~Alt }
-  - { key: Home,      mods: Shift,   action: ScrollToTop,     mode: ~Alt }
-  - { key: End,       mods: Shift,   action: ScrollToBottom,  mode: ~Alt }
-  - { key: Copy,                     action: Copy                        }
-  - { key: Paste,                    action: Paste                       }
-  - { key: Equals,    mods: Control, action: IncreaseFontSize            }
-  - { key: Add,       mods: Control, action: IncreaseFontSize            }
-  - { key: Subtract,  mods: Control, action: DecreaseFontSize            }
-  - { key: Minus,     mods: Control, action: DecreaseFontSize            }
-  - { key: Key0,      mods: Control, action: ResetFontSize               }

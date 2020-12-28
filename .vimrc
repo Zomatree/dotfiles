@@ -1,162 +1,62 @@
-" Vundle stuff
 set nocompatible
 filetype off
 
-" Set the runtime path to include and initialize Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-" Load plugin manager
 Plugin 'VundleVim/Vundle.vim'
 
-" Vimscript plugin library
-Plugin 'google/vim-maktaba'
-
-" Automatically close brackets
-Plugin 'jiangmiao/auto-pairs'
-
-" EditorConfig
-Plugin 'editorconfig/editorconfig-vim'
-
-" Allow plugins to define their own operator
-Plugin 'kana/vim-operator-user'
-
-" clang-format plugin
-Plugin 'rhysd/vim-clang-format'
-
-" Bazel support
-Plugin 'bazelbuild/vim-bazel'
-
-" CMake support
-Plugin 'vhdirk/vim-cmake'
-
-" Color theme
-Plugin 'tomasiser/vim-code-dark'
-
-" Fuzzy finder
-Plugin 'ctrlpvim/ctrlp.vim'
-
-" File tree
-Plugin 'scrooloose/nerdtree'
-
-" Auto completer
-Plugin 'Valloric/YouCompleteMe'
-
-" Discord Rich Presence
-Plugin 'vbe0201/vimdiscord'
+Plugin 'tpope/vim-fugitive'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'preservim/nerdtree'
+Plugin 'joshdick/onedark.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'leafOfTree/vim-svelte-plugin'
+Plugin 'Yggdroot/indentLine'
+Plugin 'frazrepo/vim-rainbow'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
-
-" Needs adjustment on DOS, e.g. change / to \\
-
-" Ignore JS/TS/Web Stack files
-set wildignore+=*/node_modules/*
-
-" Ignore C/C++ object files
-set wildignore+=*.o,*.obj,*.out,*.elf,*.exe,*.app
-
-" Ignore C#.NET files
-set wildignore+=*.Cache,*/bin/*,*/tmp/*,*/obj/*
-
-" Ignore Python files
-set wildignore+=*/__pycache__/*,*.pyc
-
-" Auto indentation
 filetype plugin indent on
-
-" Enable syntax highlighting
 syntax on
+colorscheme onedark
 
-" Disable swap file
-set noswapfile
 
-" Enable line numbers
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+map <C-b> :NERDTreeToggle<CR>
+
 set number
 
-" Disable line wrapping
-set nowrap
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
-" Make backspace behave like in other editors
-set backspace=indent,eol,start
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" Other options
-set smarttab
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set autoindent
-set smartindent
-set cindent
-set cmdheight=2
-set wildmenu
-set langmenu=en
-set magic
-set showmode
-set incsearch
-set ruler
-set hid
-set whichwrap+=<,>,h,l
-set mouse=a
-set numberwidth=6
-set encoding=utf-8
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-" Set the color scheme
-colorscheme codedark
+
+let g:syntastic_python_flake8_args = "--select F402 F406 F407 F5 F6 F7 F8 F9"
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+let g:vim_svelte_plugin_load_full_syntax = 1
+:let g:NERDTreeWinSize=22
+
+:set fillchars+=vert:│
+hi VertSplit ctermbg=NONE guibg=NONE
+
 set cursorline
+let g:indentLine_char = '⎸'
 
-" Access the system clipboard (on DOS, it's 'unnamed' without 'plus')
-set clipboard=unnamedplus
+set nowrap
+set sidescroll=1
 
-" Enable relative line numbering
-set rnu
-
-" Store an undo buffer in a file in $HOME/.vimundo
-set undofile
-set undodir=$HOME/.vimundo
-set undolevels=1000
-set undoreload=10000
-
-" Unbind Ex mode
-noremap Q <nop>
-
-" Unbind help menues
-noremap <F1> <nop>
-noremap <S-k> <nop>
-
-" Remove delay when pressing O
-set timeout ttimeoutlen=100
-
-" Easier split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Map F6 to spellchecking
-map <F6> :setlocal spell! spelllang=en_us<CR>
-
-" Hard Mode
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-
-" God Mode
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-
-" Enable autoformat on save
-autocmd FileType c,cpp ClangFormatAutoEnable
-
-" Open file tree
-map <C-n> :NERDTreeToggle<CR>
-
-" Disable Terminal bell
-set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
-
-" Ctrl-Backspace to delete last word
-imap <C-BS> <C-W>
+set termguicolors

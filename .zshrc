@@ -8,11 +8,16 @@ alias lt='ls --tree'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ccat='highlight --out-format=ansi'
+alias ytdl='youtube-dl'
+alias python=python3.9
+alias pip='python3.9 -m pip'
+alias py='python3.9'
+alias python3='python3.9'
 
-alias yt='youtube-viewer'
-alias ytd='youtube-dl'
-alias ytdl='ytd --add-metadata -ic -f best'
-alias yta='ytdl -x -f bestaudio/best'
+export PATH=/home/zomatree/.local/bin:$PATH
+export _ip=`(grep nameserver /etc/resolv.conf | awk '{print $2}')`
+export PULSE_SERVER=tcp:$_ip
+export DISPLAY=$_ip:0
 
 # Set the name of the theme to load.
 ZSH_THEME="powerlevel10k/powerlevel10k"

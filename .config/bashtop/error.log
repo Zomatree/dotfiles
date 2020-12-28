@@ -1,0 +1,20 @@
+ 
+New instance of bashtop version: 0.9.25 Pid: 14738
+PSUTIL ERROR! Command: get_cmd_out('sensors 2>/dev/null')
+Command 'sensors 2>/dev/null' returned non-zero exit status 1.
+06:00:54 AM ERROR: On line 2064 
+PSUTIL ERROR! Command: get_cmd_out('sensors 2>/dev/null')
+Command 'sensors 2>/dev/null' returned non-zero exit status 1.
+06:05:55 AM ERROR: On line 2064 (MUTED!)
+ 
+New instance of bashtop version: 0.9.25 Pid: 14738
+/usr/bin/bashtop: line 3405: pid_Pid:_graph: invalid variable name
+ 
+New instance of bashtop version: 0.9.25 Pid: 17183
+/usr/sbin/bashtop: line 3405: pid_Pid:_graph: invalid variable name
+ 
+New instance of bashtop version: 0.9.25 Pid: 17668
+ 
+New instance of bashtop version: 0.9.25 Pid: 735
+ 
+New instance of bashtop version: 0.9.25 Pid: 31960

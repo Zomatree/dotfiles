@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # ZSH configuration file.
 
 # Set command aliases.
@@ -13,8 +20,10 @@ alias python=python3.9
 alias pip='python3.9 -m pip'
 alias py='python3.9'
 alias python3='python3.9'
+alias vim='nvim'
+alias yay='paru'
 
-export PATH=/home/zomatree/.local/bin:$PATH
+export PATH=~/.local/bin:$PATH
 export _ip=`(grep nameserver /etc/resolv.conf | awk '{print $2}')`
 export PULSE_SERVER=tcp:$_ip
 export DISPLAY=$_ip:0
@@ -24,62 +33,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set Powerlevel10k font mode.
 POWERLEVEL9K_MODE="nerdfont-complete"
-
-# Prompt settings.
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}╭─"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}╰❯%f "
-POWERLEVEL9K_TRANSIENT_PROMPT=always
-
-# Set separator icons.
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR_ICON=$'\ue0b0'
-POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR_ICON=$'\ue0b1'
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR_ICON=$'\ue0b2'
-POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR_ICON=$'\ue0b7'
-
-# OS Segment settings.
-POWERLEVEL9K_OS_ICON_BACKGROUND='black'
-POWERLEVEL9K_LINUX_ICON='%F{cyan} ~ %F{white} Arch %F{cyan}Linux%f'
-
-# VCS icons.
-POWERLEVEL9K_VCS_GIT_ICON=$'\uf1d2 '
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uf113 '
-POWERLEVEL9K_VCS_GIT_GITLAB_ICON=$'\uf296 '
-POWERLEVEL9K_VCS_BRANCH_ICON=$''
-POWERLEVEL9K_VCS_STAGED_ICON=$'\uf055'
-POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uf421'
-POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf00d'
-POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\uf0ab '
-POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\uf0aa '
-
-# VCS colors.
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='white'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
-
-# More colors.
-POWERLEVEL9K_CUSTOM_USER_BACKGROUND='yellow'
-POWERLEVEL9K_CUSTOM_USER_FOREGROUND='black'
-
-# Status icons.
-POWERLEVEL9K_STATUS_OK_ICON=$'\uf164'
-POWERLEVEL9K_STATUS_ERROR_ICON=$'\uf165'
-POWERLEVEL9K_STATUS_ERROR_CR_ICON=$'\uf165'
-
-# Set prompt elements.
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_user dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs status command_execution_time virtualenv)
-
-# Display customized user skull with a cog next to the name.
-display_username_with_cog() {
-    echo -n "\u2699 $(whoami | grep -v '^root\$')"
-}
-POWERLEVEL9K_CUSTOM_USER="display_username_with_cog"
 
 # Auto-correction for commands.
 ENABLE_CORRECTION="true"
@@ -105,4 +58,22 @@ plugins=(
 
 setopt HIST_IGNORE_SPACE
 autoload -U compinit && compinit
-source $ZSH/oh-my-zsh.sh
+
+source ~/.oh-my-zsh/oh-my-zsh.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export LIBGL_ALWAYS_INDIRECT=1
+[ -f "/home/zomatree/.ghcup/env" ] && source "/home/zomatree/.ghcup/env" # ghcup-env
+
+if test -z "${XDG_RUNTIME_DIR}"; then
+    export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
+    if ! test -d "${XDG_RUNTIME_DIR}"; then
+        mkdir "${XDG_RUNTIME_DIR}"
+        chmod 0700 "${XDG_RUNTIME_DIR}"
+    fi
+fi
+
+export PATH=~/.npm-global/bin:$PATH
+
+export $(dbus-launch)

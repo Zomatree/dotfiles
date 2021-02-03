@@ -24,9 +24,12 @@ alias vim='nvim'
 alias yay='paru'
 
 export PATH=~/.local/bin:$PATH
-export _ip=`(grep nameserver /etc/resolv.conf | awk '{print $2}')`
-export PULSE_SERVER=tcp:$_ip
-export DISPLAY=$_ip:0
+
+if (grep -qi microsoft /proc/version); then
+    export _ip=`(grep nameserver /etc/resolv.conf | awk '{print $2}')`
+    export PULSE_SERVER=tcp:$_ip
+    export DISPLAY=$_ip:0
+fi
 
 # Set the name of the theme to load.
 ZSH_THEME="powerlevel10k/powerlevel10k"

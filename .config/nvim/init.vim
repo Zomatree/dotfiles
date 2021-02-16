@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -24,7 +24,6 @@ Plugin 'romgrk/barbar.nvim'
 Plugin 'kyazdani42/nvim-web-devicons'
 Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-Plugin 'voldikss/vim-floaterm'
 
 call vundle#end()
 
@@ -40,17 +39,16 @@ let g:airline_powerline_fonts = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_python_flake8_args = "--select F402 F406 F407 F5 F6 F7 F8 F9"
+let g:syntastic_python_flake8_args = "--ignore=C901,E305,E501,W292,W391,W505,E302,W293,F901"
 let g:chadtree_settings = {"ignore.name_exact": [".git", "__pycache__"], "view.width": 22}
 let g:vim_svelte_plugin_load_full_syntax = 1
 let g:indentLine_char = '⎸'
-let g:floaterm_position="topright"
-let g:floaterm_borderchars="        "
 
 hi FloatermBorder guibg=#2c323c guifg=white
 hi VertSplit ctermbg=NONE guibg=NONE
 
 set number
+set statusline+=W%{winnr()}
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -107,4 +105,3 @@ require'nvim-treesitter.configs'.setup {
 }
 
 EOF 
-

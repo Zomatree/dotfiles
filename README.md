@@ -25,7 +25,7 @@ system~~ switch computers and need to get things settled quickly.
 
 * [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
-* [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts), I use Hack
+* [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts), I use Fira Code
 
 #### Window Manager
 
@@ -33,7 +33,7 @@ system~~ switch computers and need to get things settled quickly.
 
 * [i3blocks](https://github.com/vivien/i3blocks)
 
-* [compton/picom](https://github.com/yshui/picom)
+* [picom](https://github.com/yshui/picom)
 
 * [rofi](https://github.com/DaveDavenport/rofi)
 
@@ -43,9 +43,7 @@ system~~ switch computers and need to get things settled quickly.
 
 #### Other
 
-* [spacemacs](https://github.com/syl20bnr/spacemacs) (primary)
-
-* [Vim](https://github.com/vim/vim)
+* [neovim](https://github.com/neovim/neovim)
 
 * [LightDM](https://github.com/canonical/lightdm) with [lightdm-webkit2-greeter](https://github.com/Antergos/web-greeter)
 
@@ -67,9 +65,9 @@ system~~ switch computers and need to get things settled quickly.
 
 ![Terminal](./screenshots/terminal.png)
 
-#### Spacemacs:
+#### Neovim:
 
-![Spacemacs](./screenshots/spacemacs.png)
+![neovim](./screenshots/neovim.png)
 
 #### rofi:
 
